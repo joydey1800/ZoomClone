@@ -1,11 +1,7 @@
 const socket = io('/');
 const videoGrid = document.getElementById('video-grid');
 
-const myPeer = new Peer(undefined, {
-    secure: true,
-    host: 'joydey.herokuapp.com',
-    port: 443,
-});
+const myPeer = new Peer(undefined, {});
 
 const peers = {};
 
@@ -35,6 +31,7 @@ navigator.mediaDevices.getUserMedia({
     // when user connect
     socket.on('user-connected', userId => {
         connectToNewUser(userId, stream);
+        console.log(userId);
     })
 
 
